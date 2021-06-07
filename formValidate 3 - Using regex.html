@@ -1,0 +1,141 @@
+<html>
+<!-- 
+All regex are written within / /. 
+^ is begining of line.
+$ is end of line.
++ is all preceding chararcter, i.e. all the characters
+Everything written between [] is allowed
+
+http://regexlib.com/CheatSheet.aspx -> regex cheat sheet
+http://regexlib.com/ -> to search for regex
+-->
+<head>
+<link rel="stylesheet" type="text/css" href="placeholder.css" />
+<script type="text/javascript">
+function validate()
+{
+	
+	//checking for name
+	//this regex allows all char, spaces(\s) & (') for eg D'souza
+	nameExp=/^[a-zA-Z\s']+$/;
+	name=document.getElementById("name").value;
+	//alert(name);
+	if(name.length<1)
+	{
+		alert("Name cannot be blank");
+		//changing color of text field label
+		document.getElementById("n").style.color="red";
+		//Putting name text field into focus
+		document.getElementById("name").focus();
+		return;
+	}
+	
+	if(!nameExp.test(name))
+	{
+		alert("Invalid Characters");
+		//changing color of text field label
+		document.getElementById("n").style.color="red";
+		//Putting name text field into focus
+		document.getElementById("name").focus();
+		return;
+	}
+
+	//Checking for age
+	/*This regex checks for numbers, min 1 num and max 3 nums.
+	we don't give + for preceding chars as we have mentioned the 
+	range that specifies the min & max length of value in {}. */
+	ageExp=/^[0-9]{1,3}$/;
+	age=document.getElementById("age").value;
+	if(age.length<1)
+	{
+		alert("Age cannot be blank");
+		//changing color of text field label
+		document.getElementById("a").style.color="red";
+		//Putting name text field into focus
+		document.getElementById("age").focus();
+		return;
+	}
+		
+	if(!ageExp.test(age))
+	{
+		alert("Invalid entry");
+		//changing color of text field label
+		document.getElementById("a").style.color="red";
+		//Putting name text field into focus
+		document.getElementById("age").focus();
+		return;
+	}
+
+	//checking for password
+	/* Password must contain at least one letter, at least one number, and be longer than six charaters. */
+	passExp=/^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$/;
+	pass=document.getElementById("pwd").value;
+	if(pass.length<1)
+	{
+		alert("Password cannot be blank");
+		//changing color of text field label
+		document.getElementById("p").style.color="red";
+		//Putting password text field into focus
+		document.getElementById("pwd").focus();
+		return;
+	}
+	if(!passExp.test(pass))
+	{
+		alert("Invalid entry");
+		//changing color of text field label
+		document.getElementById("p").style.color="red";
+		//Putting name text field into focus
+		document.getElementById("pwd").focus();
+		return;
+	}
+
+	//Checking for email
+	mailExp=/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+	mail=document.getElementById("email").value;
+	if(mail.length<1)
+	{
+		alert("Email cannot be blank");
+		//changing color of text field label
+		document.getElementById("e").style.color="red";
+		//Putting name text field into focus
+		document.getElementById("email").focus();
+		return;
+	}
+		
+	if(!mailExp.test(mail))
+	{
+		alert("Invalid email");
+		//changing color of text field label
+		document.getElementById("e").style.color="red";
+		//Putting name text field into focus
+		document.getElementById("email").focus();
+		return;
+	}
+
+	document.forms[0].submit();
+}
+</script>
+</head>
+<body style="background-color:#B0E0E6; color: #000000">
+<!-- 
+Using oninput in text fields to change red error text back to black.
+This event is similar to the onchange event. The difference is that the oninput event occurs immediately after the value of an element has changed, while onchange occurs when the element loses focus, after the content has been changed. The other difference is that the onchange event also works on <select> elements.
+-->
+<h2>Form validation using JavaScript & Regex</h2>
+<form action="success.html" name="f1" id="f1">
+<fieldset>
+<legend>Form</legend>
+<span id="n">Name: </span><input type="text" name="Name" id="name" oninput="document.getElementById('n').style.color='black'" placeholder="only char & ' allowed">
+<br/><br/>
+<span id="a">Age: </span><input type="text" name="age" id="age" oninput="document.getElementById('a').style.color='black'" placeholder="max length 3 nums ">
+<br/><br/>
+<span id="p">Passsword: </span><input type="password" name="pwd" id="pwd" oninput="document.getElementById('p').style.color='black'" placeholder="min 1 char,1 num & more than 6 chars" size="35">
+<br/><br/>
+<span id="e">Email: </span><input type="text" name="email" id="email" oninput="document.getElementById('e').style.color='black'">
+<br/><br/>
+<input type="button" value="Save" onclick="validate()">
+<input type="reset" value="Cancel">
+</fieldset>
+</form>
+</body>
+</html> 

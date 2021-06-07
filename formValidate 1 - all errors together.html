@@ -1,0 +1,33 @@
+<html>
+<head>
+<script src="formValidate1.js"></script>
+</head>
+<body bgcolor="#B0E0E6">
+<h2>Form validation using JavaScript</h2>
+<h3>Checking for all errors together</h3>
+<form action="success.html" name="f1" id="f1">
+<fieldset>
+<legend>Form</legend>
+Name: <input type="text" name="Name" id="name"><br><br>
+Password: <input type="password" name="pwd" id="pwd"><br><br>
+Gender:
+<input type="radio" name="gender" value="male">Male
+<input type="radio" name="gender" value="female">Female<br><br>
+Hobbies:
+<input type="checkbox" name="hobbies" value="Drawing">Drawing
+<input type="checkbox" name="hobbies" value="Reading">Reading
+<input type="checkbox" name="hobbies" value="swimming">Swimming
+<br><br>
+City:
+<select name="c1">
+<option value="">Select City</option>
+<option value="mum">Mumbai</option>
+<option value="pune">Pune</option>
+</select>
+<br><br>
+<input type="button" value="Save" onclick="validate()">
+<input type="reset" value="Cancel">
+</fieldset>
+</form>
+</body>
+</html> 

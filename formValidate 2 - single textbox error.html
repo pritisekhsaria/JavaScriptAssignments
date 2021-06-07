@@ -1,0 +1,50 @@
+<html>
+<head>
+<script type="text/javascript">
+function validate()
+{
+	
+	//checking for name                                        
+	if(document.forms[0].elements[1].value.length<1)
+	{
+		alert("Name cannot be blank");
+		//changing color of text field label
+		document.getElementById("n").style.color="red";
+		//Putting name text field into focus
+		document.forms[0].elements[1].focus();
+		return;
+	}
+	if(document.forms[0].elements[2].value.length<1)
+	{
+		alert("Password cannot be blank");
+		//changing color of text field label
+		document.getElementById("p").style.color="red";
+		//Putting password text field into focus
+		document.forms[0].elements[2].focus();
+		return;
+	}
+	document.forms[0].submit();
+}
+</script>
+</head>
+<body bgcolor="#B0E0E6">
+<!-- 
+Using oninput in text fields to change red error text back to black.
+This event is similar to the onchange event. The difference is that the oninput event occurs immediately after the value of an element has changed, while onchange occurs when the element loses focus, after the content has been changed. The other difference is that the onchange event also works on <select> elements.
+-->
+<h2>Form validation using JavaScript</h2>
+<h3>Checking for each field individually.</h3>
+<h3>Changing the color of the field label if error occurs</h3>
+<form action="success.html" name="f1" id="f1">
+<fieldset>
+<legend>Form</legend>
+<span id="n">Name: </span><input type="text" name="Name" id="name" oninput="document.getElementById('n').style.color='black'">
+<br/><br/>
+<span id="p">Passsword: </span><input type="password" name="pwd" id="pwd" oninput="document.getElementById('p').style.color='black'">
+<br/><br/>
+<input type="button" value="Save" onclick="validate()">
+<input type="reset" value="Cancel">
+</fieldset>
+</form>
+</body>
+</html> 

@@ -1,0 +1,61 @@
+<html>
+<head>
+<script>
+var i = 1;
+function changeImage() {
+	
+	if(i==1)
+       document.getElementById("demo").src="images/kit2.jpg";
+	else if(i==2)
+       document.getElementById("demo").src="images/kit3.jpg";
+	else if(i==3)
+       document.getElementById("demo").src="images/kit1.jpg";
+	   
+	i++;
+	if(i==4)
+	{  i=1;	}
+}
+
+
+function startTime(){
+	var timer = setInterval( "changeImage()", 1500); 
+}
+
+
+var j = 1;
+function changeImage1()
+{  
+	if(j==1)
+	{
+       document.getElementById("demo1").src="images/pup2.jpg";
+       j = 2;
+	}
+	else if(j==2)
+	{
+       document.getElementById("demo1").src="images/pup3.jpg";
+       j = 3;
+	}
+	else if(j==3)
+	{
+	  document.getElementById("demo1").src="images/pup1.jpg";
+	  j = 1;
+	}	
+}
+</script>
+</head>
+<body onload="startTime()">
+<table width="70%" align="center">
+<tr>
+<td align="center">
+<h3>Image change using setInterval()</h3><br/><br/>
+<img id="demo" src="images/kit1.jpg"><br/><br/>
+</td>
+<td align="center">
+<h3>Image change using onclick()</h3><br/><br/>
+<img id="demo1" src="images/pup1.jpg"><br/><br/>
+<input type="button" value="Click to change image" onclick="changeImage1()" >
+</td>
+</tr>
+</table>
+</body>
+</html>
