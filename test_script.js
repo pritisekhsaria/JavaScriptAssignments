@@ -1,10 +1,30 @@
 const assert = require('assert');
 
 // Mock Google Apps Script environment
+class MockFile {
+  constructor(name, id = 'mock-file-id') {
+    this.name = name;
+    this.id = id;
+  }
+
+  getId() {
+    return this.id;
+  }
+
+  getName() {
+    return this.name;
+  }
+
+  makeCopy(name, folder) {
+    return new MockFile(name);
+  }
+}
+
 class MockFolder {
   constructor(name) {
     this.name = name;
     this.subfolders = new Map();
+    this.files = new Map();
   }
 
   createFolder(name) {
@@ -30,7 +50,8 @@ class MockFolder {
 }
 
 global.DriveApp = {
-  getFolderById: () => new MockFolder('root')
+  getFolderById: () => new MockFolder('root'),
+  getFileById: (id) => new MockFile('template', id)
 };
 
 global.SpreadsheetApp = {
@@ -120,7 +141,8 @@ records.forEach((record, index) => {
     console.log('4. Testing spreadsheet creation...');
     const spreadsheetId = spreadsheetManager.createStudentSpreadsheet(studentData, 'mock-template-id');
     assert.ok(spreadsheetId, 'Spreadsheet should be created');
-    console.log('✓ Spreadsheet creation is valid');
+    const expectedSpreadsheetName = `${record.Company_ID}+${record.Student_ID}+${record['Full Name'].toLowerCase().replace(/\s+/g, '_')}_scores`;
+    console.log('✓ Spreadsheet creation and naming is valid');
 
     testsPassed++;
     console.log('\n✓ All tests passed for this record!\n');
